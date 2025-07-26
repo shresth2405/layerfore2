@@ -25,7 +25,7 @@ export default function Home() {
             zIndex: -1,
           }}
         >
-          <DotGrid
+           <DotGrid
             dotSize={2}
             gap={20}
             baseColor="#4F5E66"
@@ -180,20 +180,27 @@ export default function Home() {
               onBuy={() => alert("Coming soon!")}
             />
           </div>
+            <StarBorder
+                  className="mx-auto mt-9"
+                  color="#FCB41F"
+                  speed="5s"
+                >
+                  Explore More Products
+                </StarBorder>
         </div>
 
         {/* Service Showcase Section */}
-        <div className="w-full bg-black/30 backdrop-blur-lg mt-32 py-20">
+        <div className="w-full z-20 mt-32 ">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="relative">
-                <div className="aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500/20 to-purple-500/20 relative">
+                <div className="aspect-video z-10 backdrop-blur-lg rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500/20 to-purple-500/20 relative">
                   {/* Replace with your actual manufacturing/process image */}
-                  <div className="absolute inset-0 flex items-center justify-center text-white/50">
+                  <div className="absolute inset-0  flex items-center justify-center text-white/50">
                     Manufacturing Process Image
                   </div>
                 </div>
-                <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gradient-to-br from-[#FCB41F] to-orange-600 rounded-2xl -z-10 blur-2xl opacity-30"></div>
+                {/* <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gradient-to-br from-[#FCB41F] to-orange-600 rounded-2xl -z-10 blur-2xl opacity-30"></div> */}
               </div>
               
               <div>
@@ -246,7 +253,8 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="w-full bg-black/40 backdrop-blur-lg mt-32 py-16">
+      </div>
+        <footer className="w-full backdrop-blur-lg mt-32  pt-20">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div>
@@ -300,12 +308,11 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="border-t border-white/10 mt-12 pt-8 text-center text-neutral-400">
+          </div>
+            <div className="border-t bg-transparent border-white/10 mt-12 pt-8 text-center text-neutral-400">
               <p>&copy; {new Date().getFullYear()} LayerForge. All rights reserved.</p>
             </div>
-          </div>
         </footer>
-      </div>
     </div>
   );
 }
