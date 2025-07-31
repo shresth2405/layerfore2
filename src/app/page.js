@@ -10,6 +10,30 @@ import StarBorder from "../components/StarBorder";
 export default function Home() {
   const [mounted, setMounted] = useState(false);
 
+  const featuredProducts = [
+    {
+      id: 1,
+      title: "Professional 3D Printing",
+      description: "High-quality 3D printing service with industrial-grade materials",
+      price: 299.99,
+      images: ['/window.svg']
+    },
+    {
+      id: 2,
+      title: "Rapid Prototyping",
+      description: "Quick turnaround prototyping service with expert consultation",
+      price: 199.99,
+      images: ['/globe.svg']
+    },
+    {
+      id: 3,
+      title: "Custom Manufacturing",
+      description: "Tailored manufacturing solutions for your specific needs",
+      price: 499.99,
+      images: ['/file.svg']
+    }
+  ];
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -47,7 +71,7 @@ export default function Home() {
             text={[
               "Building the future",
               "One layer at a time",
-              "Where innovation meets design",
+              "Innovation in 3D Printing",
               "Create without limits"
             ]}
             typingSpeed={75}
@@ -60,6 +84,29 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-6 w-full">
+          {/* Featured Products Section */}
+          <div className="col-span-full mb-20">
+            <h2 className="text-4xl font-bold text-center mb-12">Featured Products</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {featuredProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  href={`/products/${product.id}`}
+                />
+              ))}
+            </div>
+            <div className="text-center mt-12">
+              <a
+                href="/products"
+                className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold"
+              >
+                Explore More Products
+              </a>
+            </div>
+          </div>
+
+          {/* Services Section */}
           <SpotlightCard 
             className="flex flex-col items-center gap-6 min-h-[400px]" 
             spotlightColor="rgba(0, 229, 255, 0.2)"

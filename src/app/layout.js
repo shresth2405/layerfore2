@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from '@/components/Navigation';
 import DotGrid from "@/components/DotGrid";
+import { CartProvider } from '@/context/CartContext';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,20 +26,23 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative min-h-screen`}
         suppressHydrationWarning
       >
-        {/* <DotGrid
-          className="absolute inset-0 pointer-events-none"
-          style={{ zIndex: -1 }}
-          maxSpeed={0.5}
-          speedTrigger={100}
-          proximity={160}
-          resistance={200}
-          returnDuration={0.5}
-          shockRadius={250}
-          shockStrength={5}/> */}
-        <main className="">
-          {children}
-        </main>
-        <Navigation />
+        <CartProvider>
+          <DotGrid
+            className="fixed inset-0 pointer-events-none"
+            style={{ zIndex: -1 }}
+            maxSpeed={0.5}
+            speedTrigger={100}
+            proximity={160}
+            resistance={200}
+            returnDuration={0.5}
+            shockRadius={250}
+            shockStrength={5}
+          />
+          <main className="min-h-screen pt-16 pb-24">
+            {children}
+          </main>
+          <Navigation />
+        </CartProvider>
       </body>
     </html>
   );
