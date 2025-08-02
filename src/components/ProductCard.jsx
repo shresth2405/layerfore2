@@ -2,30 +2,54 @@
 
 import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
+import { ParticleCard } from './MagicBento';
 
-export default function ProductCard({ product }) {
-  if (!product) {
+export default function ProductCard({ product, title: propTitle, description: propDesc, price: propPrice, images: propImages, onBuy }) {
+  const { addToCart } = useCart();
+  
+  // Use either product object properties or direct props
+  const title = product?.title || propTitle;
+  const description = product?.description || propDesc;
+  const price = product?.price || propPrice;
+  const images = product?.images || propImages;
+
+  if (!title || !description || !price) {
     return null;
   }
-
-  const { addToCart } = useCart();
-  const { title, description, price, images } = product;
 
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(product);
+    if (onBuy) {
+      onBuy();
+    } else if (product) {
+      addToCart(product);
+    } else {
+      addToCart({
+        title,
+        description,
+        price,
+        images
+      });
+    }
   };
 
   return (
-    <div className="relative bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
-      <div className="relative h-48 bg-gray-200">
+    <ParticleCard
+      className="card bg-[#060010] border border-[#392e4e] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-0.5"
+      enableTilt={true}
+      enableMagnetism={true}
+      clickEffect={true}
+      particleCount={8}
+      glowColor="132, 0, 255"
+    >
+      <div className="relative h-48">
         {images?.[0] ? (
           <Image
             src={images[0]}
             alt={title}
             fill
-            className="object-cover"
+            className="object-contain p-4"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-400">
@@ -34,19 +58,19 @@ export default function ProductCard({ product }) {
         )}
       </div>
       
-      <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600 text-sm mb-2 line-clamp-2">{description}</p>
+      <div className="p-6">
+        <h3 className="text-lg font-semibold mb-2 text-white">{title}</h3>
+        <p className="text-gray-400 text-sm mb-4 line-clamp-2">{description}</p>
         <div className="flex justify-between items-center">
-          <span className="text-lg font-bold">${price?.toFixed(2)}</span>
+          <span className="text-lg font-bold text-blue-400">${price?.toFixed(2)}</span>
           <button
             onClick={handleAddToCart}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             Add to Cart
           </button>
         </div>
       </div>
-    </div>
+    </ParticleCard>
   );
 }

@@ -6,33 +6,11 @@ import TextType from "../components/TextType";
 import SpotlightCard from "../components/SpotlightCard";
 import ProductCard from "../components/ProductCard";
 import StarBorder from "../components/StarBorder";
+import { products } from "@/data/products";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
-
-  const featuredProducts = [
-    {
-      id: 1,
-      title: "Professional 3D Printing",
-      description: "High-quality 3D printing service with industrial-grade materials",
-      price: 299.99,
-      images: ['/window.svg']
-    },
-    {
-      id: 2,
-      title: "Rapid Prototyping",
-      description: "Quick turnaround prototyping service with expert consultation",
-      price: 199.99,
-      images: ['/globe.svg']
-    },
-    {
-      id: 3,
-      title: "Custom Manufacturing",
-      description: "Tailored manufacturing solutions for your specific needs",
-      price: 499.99,
-      images: ['/file.svg']
-    }
-  ];
+  const featuredProducts = products;
 
   useEffect(() => {
     setMounted(true);
@@ -64,7 +42,7 @@ export default function Home() {
       )}
 
       <div className="flex flex-col items-center pt-32 pb-20 w-full">
-        <h1 className="text-8xl font-bold mb-6 z-10">LayerForge</h1>
+        <h1 className="text-8xl font-bold mb-6 z-10 bg-gradient-to-r from-primary via-accent to-success bg-clip-text text-transparent">LayerForge</h1>
 
         <div className="text-6xl z-10 min-h-[3rem] mb-20 flex items-center justify-side">
           <TextType 
@@ -78,17 +56,20 @@ export default function Home() {
             pauseDuration={1500}
             showCursor={true}
             cursorCharacter="|"
-            textColors={["#FCB41F", "#4F5E66", "#ffffff"]}
+            textColors={["rgb(252, 180, 31)", "rgb(14, 165, 233)", "rgb(34, 197, 94)"]}
             className="text-center"
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-6 w-full">
           {/* Featured Products Section */}
-          <div className="col-span-full mb-20">
-            <h2 className="text-4xl font-bold text-center mb-12">Featured Products</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredProducts.map((product) => (
+          <div className="col-span-full mb-32">
+            <h2 className="text-4xl font-bold text-center mb-6">Featured Products</h2>
+            <p className="text-neutral-400 mb-12 max-w-2xl mx-auto text-center">
+              Discover our cutting-edge products designed to transform your digital experience.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {featuredProducts.slice(0, 3).map((product) => (
                 <ProductCard
                   key={product.id}
                   product={product}
@@ -96,20 +77,20 @@ export default function Home() {
                 />
               ))}
             </div>
-            <div className="text-center mt-12">
+            <div className="text-center mt-16">
               <a
                 href="/products"
-                className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold"
+                className="inline-block px-8 py-4 bg-accent-500 text-white rounded-lg hover:bg-accent-600 transition-all duration-300 text-lg font-semibold hover:shadow-lg hover:shadow-accent-500/25 transform hover:-translate-y-0.5"
               >
-                Explore More Products
+                View All Products
               </a>
             </div>
           </div>
 
           {/* Services Section */}
           <SpotlightCard 
-            className="flex flex-col items-center gap-6 min-h-[400px]" 
-            spotlightColor="rgba(0, 229, 255, 0.2)"
+            className="flex flex-col items-center gap-6 min-h-[400px] transform hover:-translate-y-1 transition-all duration-300" 
+            spotlightColor="rgba(14, 165, 233, 0.2)"
           >
             <div className="w-20 h-20 rounded-2xl bg-blue-500/20 flex items-center justify-center">
               <svg className="w-10 h-10 text-blue-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,7 +110,7 @@ export default function Home() {
           </SpotlightCard>
 
           <SpotlightCard 
-            className="flex flex-col items-center gap-6 min-h-[400px]" 
+            className="flex flex-col items-center gap-6 min-h-[400px] transform hover:-translate-y-1 transition-all duration-300" 
             spotlightColor="rgba(252, 180, 31, 0.2)"
           >
             <div className="w-20 h-20 rounded-2xl bg-[#FCB41F]/20 flex items-center justify-center">
@@ -149,8 +130,8 @@ export default function Home() {
           </SpotlightCard>
 
           <SpotlightCard 
-            className="flex flex-col items-center gap-6 min-h-[400px]" 
-            spotlightColor="rgba(74, 222, 128, 0.2)"
+            className="flex flex-col items-center gap-6 min-h-[400px] transform hover:-translate-y-1 transition-all duration-300" 
+            spotlightColor="rgba(34, 197, 94, 0.2)"
           >
             <div className="w-20 h-20 rounded-2xl bg-green-500/20 flex items-center justify-center">
               <svg className="w-10 h-10 text-green-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,73 +150,8 @@ export default function Home() {
           </SpotlightCard>
         </div>
 
-        <div className="mt-32 text-center">
-          {/* <h2 className="text-4xl font-bold mb-4">Our Products</h2> */}
-          {/* <p className="text-neutral-400 mb-12 max-w-2xl mx-auto">
-            Discover our cutting-edge products designed to transform your digital experience.
-          </p> */}
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ProductCard
-              title="AI Development Kit"
-              description="Complete toolkit for building AI-powered applications with ease."
-              price="499"
-              images={[
-                "/products/ai-kit-1.jpg",
-                "/products/ai-kit-2.jpg",
-                "/products/ai-kit-3.jpg"
-              ]}
-              baseWidth={350}
-              autoplay={true}
-              autoplayDelay={3000}
-              pauseOnHover={true}
-              loop={true}
-              onBuy={() => alert("Coming soon!")}
-            />
-            
-            <ProductCard
-              title="Cloud Manager Pro"
-              description="Powerful cloud infrastructure management solution for enterprises."
-              price="299"
-              images={[
-                "/products/cloud-1.jpg",
-                "/products/cloud-2.jpg",
-                "/products/cloud-3.jpg"
-              ]}
-              baseWidth={350}
-              autoplay={true}
-              autoplayDelay={3000}
-              pauseOnHover={true}
-              loop={true}
-              onBuy={() => alert("Coming soon!")}
-            />
-            
-            <ProductCard
-              title="Security Suite"
-              description="Enterprise-grade security solution for your applications."
-              price="399"
-              images={[
-                "/products/security-1.jpg",
-                "/products/security-2.jpg",
-                "/products/security-3.jpg"
-              ]}
-              baseWidth={350}
-              autoplay={true}
-              autoplayDelay={3000}
-              pauseOnHover={true}
-              loop={true}
-              onBuy={() => alert("Coming soon!")}
-            />
-          </div>
-            {/* <StarBorder
-                  className="mx-auto mt-9"
-                  color="#FCB41F"
-                  speed="5s"
-                >
-                  Explore More Products
-                </StarBorder> */}
-        </div>
-
+        
+        
         {/* Service Showcase Section */}
         <div className="w-full z-20 mt-32 ">
           <div className="max-w-7xl mx-auto px-6">
