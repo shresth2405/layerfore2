@@ -59,8 +59,8 @@ function DockItem({
         onHoverEnd={() => isHovered.set(0)}
         onFocus={() => isHovered.set(1)}
         onBlur={() => isHovered.set(0)}
-        className={`relative inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-2 shadow-md ${
-          active ? 'ring-2 ring-blue-500 border-blue-500' : ''
+        className={`relative inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-4 shadow-md ${
+          active ? 'ring-2 ring--500 border--500' : ''
         } ${className}`}
         tabIndex={0}
         role="button"
@@ -118,7 +118,7 @@ export default function Dock({
   spring = { mass: 0.1, stiffness: 150, damping: 12 },
   magnification = 70,
   distance = 200,
-  panelHeight = 64,
+  panelHeight = 70,
   dockHeight = 256,
   baseItemSize = 50,
 }) {

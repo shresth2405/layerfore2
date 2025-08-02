@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import ProductCard from '@/components/ProductCard';
 import Link from 'next/link';

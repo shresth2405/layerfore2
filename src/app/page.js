@@ -170,10 +170,10 @@ export default function Home() {
         </div>
 
         <div className="mt-32 text-center">
-          <h2 className="text-4xl font-bold mb-4">Our Products</h2>
-          <p className="text-neutral-400 mb-12 max-w-2xl mx-auto">
+          {/* <h2 className="text-4xl font-bold mb-4">Our Products</h2> */}
+          {/* <p className="text-neutral-400 mb-12 max-w-2xl mx-auto">
             Discover our cutting-edge products designed to transform your digital experience.
-          </p>
+          </p> */}
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ProductCard
@@ -227,13 +227,13 @@ export default function Home() {
               onBuy={() => alert("Coming soon!")}
             />
           </div>
-            <StarBorder
+            {/* <StarBorder
                   className="mx-auto mt-9"
                   color="#FCB41F"
                   speed="5s"
                 >
                   Explore More Products
-                </StarBorder>
+                </StarBorder> */}
         </div>
 
         {/* Service Showcase Section */}
