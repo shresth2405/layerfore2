@@ -1,12 +1,12 @@
 export const products = [
   {
     id: 1,
-    title: "Professional 3D Printing",
+    productName: "Professional 3D Printing",
     description: "High-quality 3D printing service with industrial-grade materials",
     price: 299.99,
     category: "printing",
     materials: ["PLA", "ABS", "PETG"],
-    images: ['/window.svg'],
+    thumbnail: '/window.svg',
     specs: {
       resolution: "50-100 microns",
       buildVolume: "250 x 250 x 300 mm",
@@ -22,12 +22,12 @@ export const products = [
   },
   {
     id: 2,
-    title: "Rapid Prototyping",
+    productName: "Rapid Prototyping",
     description: "Quick turnaround prototyping service with expert consultation",
     price: 199.99,
     category: "prototyping",
     materials: ["Resin", "Nylon", "TPU"],
-    images: ['/globe.svg'],
+    thumbnail: '/globe.svg',
     specs: {
       accuracy: "±0.1mm",
       minFeatureSize: "0.2mm",
@@ -43,12 +43,12 @@ export const products = [
   },
   {
     id: 3,
-    title: "Custom Manufacturing",
+    productName: "Custom Manufacturing",
     description: "Tailored manufacturing solutions for your specific needs",
     price: 499.99,
     category: "manufacturing",
     materials: ["Metal", "Composite", "Ceramic"],
-    images: ['/file.svg'],
+    thumbnail: '/file.svg',
     specs: {
       batchSize: "1-1000 units",
       quality: "ISO 9001:2015",

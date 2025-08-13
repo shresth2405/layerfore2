@@ -8,10 +8,10 @@ export default function ProductCard({ product, title: propTitle, description: pr
   const { addToCart } = useCart();
   
   // Use either product object properties or direct props
-  const title = product?.title || propTitle;
+  const title = product?.productName || propTitle;
   const description = product?.description || propDesc;
   const price = product?.price || propPrice;
-  const images = product?.images || propImages;
+  const images = product?.thumbnail || propImages;
 
   if (!title || !description || !price) {
     return null;
@@ -23,7 +23,13 @@ export default function ProductCard({ product, title: propTitle, description: pr
     if (onBuy) {
       onBuy();
     } else if (product) {
-      addToCart(product);
+      addToCart({
+                  _id: product._id,
+                  title: product.productName,
+                  price: product.price,
+                  thumbnail: product.thumbnail,
+                  quantity: 1,
+                });
     } else {
       addToCart({
         title,
@@ -44,9 +50,9 @@ export default function ProductCard({ product, title: propTitle, description: pr
       glowColor="132, 0, 255"
     >
       <div className="relative h-48">
-        {images?.[0] ? (
+        {images? (
           <Image
-            src={images[0]}
+            src={images}
             alt={title}
             fill
             className="object-contain p-4"
